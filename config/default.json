@@ -1,4 +1,0 @@
-{
-  "mongoURI": "mongodb+srv://prasanna:h6yhJiw77FoYhAJG@devconnector.yyztknd.mongodb.net/?retryWrites=true&w=majority",
-  "jwtSecret": "99-problems-but-express-aint-one"
-}
