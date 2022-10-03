@@ -6,7 +6,7 @@ import { getCurrentProfile } from './../../reducers/profileThunk';
 
 const Dashboard = () => {
   const { isAuthenticated, loading } = useSelector(selectAuth);
-  const profile = useSelector(selectProfile);
+  //   const profile = useSelector(selectProfile);
   const dispatch = useDispatch();
 
   useEffect(() => {

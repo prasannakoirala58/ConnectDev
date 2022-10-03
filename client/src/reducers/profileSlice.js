@@ -20,11 +20,12 @@ const profileSlice = createSlice({
     },
 
     [getCurrentProfile.fulfilled]: (state, { payload }) => {
+      console.log(payload);
       return { state, profile: payload, loading: false };
     },
 
     [getCurrentProfile.rejected]: (state, { payload }) => {
-      console.log(payload);
+      //   console.log(payload);
       return { state, error: payload, loading: false };
     },
   },

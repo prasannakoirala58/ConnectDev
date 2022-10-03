@@ -32,7 +32,6 @@ const Login = () => {
   if (isAuthenticated) {
     return <Navigate to="/dashboard" />;
   }
-  // dispatch(loadUser());
 
   return (
     <Fragment>
