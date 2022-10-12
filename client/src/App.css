@@ -7,10 +7,34 @@
   --success-color: #28a745;
 }
 
+/* Default Colors -
+  --primary-color: #17a2b8;
+  --dark-color: #343a40;
+  --light-color: #f4f4f4; 
+*/
+
+/* some two color combos:
+#949398FF and #F4DF4EFF
+#FC7768  and #5B84B2
+#5C3C3D and #BF8A7C 
+*/
+
+/* some 3 color combos:
+#94DCE8 and #068081 and #339E66
+#5F6B9F and #EEFF01 and #6570A8
+#E75B1E and #01684A and #502C20 
+#6C80BE and #A0B2BE and #D3D0CB
+#191134 and #49366A and #EBB4A3 landing style pallete
+*/
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  height: 100%;
 }
 
 body {
@@ -333,7 +357,7 @@ button {
 /* Landing Page */
 .landing {
   position: relative;
-  background: url('./img/showcase.jpg') no-repeat center center/cover;
+  background: url('./img/sea.jpg') no-repeat center center/cover;
   height: 100vh;
 }
 

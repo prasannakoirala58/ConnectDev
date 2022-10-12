@@ -20,12 +20,12 @@ const authSlice = createSlice({
 
     [register.fulfilled]: (state, { payload }) => {
       localStorage.setItem('token', payload.token);
-      return { state, payload, isAuthenticated: true, loading: false };
+      return { ...state, payload, isAuthenticated: true, loading: false };
     },
 
     [register.rejected]: (state, action) => {
       localStorage.removeItem('token');
-      return { state, token: null, isAuthenticated: false, loading: false };
+      return { ...state, token: null, isAuthenticated: false, loading: false };
     },
 
     // logging in a user
@@ -35,12 +35,12 @@ const authSlice = createSlice({
 
     [login.fulfilled]: (state, { payload }) => {
       localStorage.setItem('token', payload.token);
-      return { state, payload, isAuthenticated: true, loading: false };
+      return { ...state, payload, isAuthenticated: true, loading: false };
     },
 
     [login.rejected]: (state, action) => {
       localStorage.removeItem('token');
-      return { state, token: null, isAuthenticated: false, loading: false };
+      return { ...state, token: null, isAuthenticated: false, loading: false };
     },
 
     // loading a user
@@ -50,14 +50,14 @@ const authSlice = createSlice({
 
     [loadUser.fulfilled]: (state, { payload }) => {
       // const { type, payload } = action;
-      return { state, isAuthenticated: true, loading: false, user: payload };
+      return { ...state, isAuthenticated: true, loading: false, user: payload };
     },
 
     [loadUser.rejected]: (state, action) => {
       // console.log(action.payload);
       // console.log(action.error.message);
       localStorage.removeItem('token');
-      return { state, token: null, isAuthenticated: false, loading: false };
+      return { ...state, token: null, isAuthenticated: false, loading: false };
     },
 
     // logging out a user
@@ -67,12 +67,12 @@ const authSlice = createSlice({
 
     [logout.fulfilled]: (state, action) => {
       localStorage.removeItem('token');
-      return { state, token: null, isAuthenticated: false, loading: false };
+      return { ...state, token: null, isAuthenticated: false, loading: false };
     },
 
     [logout.rejected]: (state, action) => {
       localStorage.removeItem('token');
-      return { state, token: null, isAuthenticated: false, loading: false };
+      return { ...state, token: null, isAuthenticated: false, loading: false };
     },
   },
 });

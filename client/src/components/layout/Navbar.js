@@ -3,19 +3,43 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectAuth } from '../../reducers/authSlice';
 import { logout } from '../../reducers/authThunk';
+import { getProfiles, clearProfile } from '../../reducers/profileThunk';
+import { getPosts } from '../../reducers/postThunk';
 
 const Navbar = () => {
   const dispatch = useDispatch();
   let { isAuthenticated, loading } = useSelector(selectAuth);
-  // console.log(`isAuthenticated:${isAuthenticated}, loading:${loading}`);
-  // onClick={dispatch(logout())}
 
   const logUserOut = () => {
+    dispatch(clearProfile());
     dispatch(logout());
+  };
+
+  const getAllProfiles = async () => {
+    await dispatch(getProfiles());
+  };
+
+  const getAllPosts = async () => {
+    await dispatch(getPosts());
   };
 
   const authLinks = (
     <ul>
+      <li>
+        <Link onClick={getAllProfiles} to="/profiles">
+          <i className="fa-solid fa-code" /> <span className="hide-sm">Developers</span>
+        </Link>
+      </li>
+      <li>
+        <Link onClick={getAllPosts} to="/posts">
+          <i className="fa-solid fa-signs-post" /> <span className="hide-sm">Posts</span>
+        </Link>
+      </li>
+      <li>
+        <Link to="/dashboard">
+          <i className="fas fa-user" /> <span className="hide-sm">Dashboard</span>
+        </Link>
+      </li>
       <li>
         <a onClick={logUserOut} href="#!">
           <i className="fas fa-sign-out-alt"></i> <span className="hide-sm">LogOut</span>
@@ -27,13 +51,19 @@ const Navbar = () => {
   const guestLinks = (
     <ul>
       <li>
-        <a to="#!">Developers</a>
+        <Link onClick={getAllProfiles} to="/profiles">
+          <i className="fa-solid fa-code" /> <span>Developers</span>
+        </Link>
       </li>
       <li>
-        <Link to="/register">Register</Link>
+        <Link to="/register">
+          <i className="fa-solid fa-address-card" /> <span>Register</span>
+        </Link>
       </li>
       <li>
-        <Link to="/login">Login</Link>
+        <Link to="/login">
+          <i className="fa-solid fa-right-to-bracket" /> <span>Login</span>
+        </Link>
       </li>
     </ul>
   );

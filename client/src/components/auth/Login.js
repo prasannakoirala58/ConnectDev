@@ -1,15 +1,14 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
-import { setAlert } from '../../reducers/alertSlice';
 import { selectAuth } from '../../reducers/authSlice';
-import { login, loadUser } from '../../reducers/authThunk';
+import { login } from '../../reducers/authThunk';
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { isAuthenticated, payload } = useSelector(selectAuth);
-  console.log(payload);
+  const { isAuthenticated } = useSelector(selectAuth);
+  // console.log(payload);
 
   const [formData, setFormData] = useState({
     email: '',
@@ -22,8 +21,13 @@ const Login = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    dispatch(login({ email, password }));
-    dispatch(loadUser());
+    try {
+      await dispatch(login({ email, password })).unwrap();
+      // console.log(resultLogin);
+    } catch (error) {
+      console.log(error);
+    }
+    // dispatch(loadUser());
     // dispatch(dispatchLoadUserThunk());
     // console.log('SUCCESS!');
   };

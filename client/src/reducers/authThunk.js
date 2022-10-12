@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { setAlert } from './alertSlice';
 import setAuthToken from '../utils/setAuthToken';
+// import { clearProfile } from './profileThunk';
 
 // Load User
 export const loadUser = createAsyncThunk(
@@ -11,12 +12,12 @@ export const loadUser = createAsyncThunk(
       setAuthToken(localStorage.token);
     }
 
-    // console.log(localStorage.token);
-
     try {
       const res = await axios.get('/api/auth');
+      // console.log(res);
       return res.data;
     } catch (err) {
+      // console.log(err);
       if (err) return rejectWithValue('Opps there seems to be an error');
     }
   }

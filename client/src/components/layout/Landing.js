@@ -1,7 +1,15 @@
 import React from 'react'; // rafce
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectAuth } from '../../reducers/authSlice';
 
 const Landing = () => {
+  const { isAuthenticated } = useSelector(selectAuth);
+
+  if (isAuthenticated) {
+    return <Navigate to="/dashboard" />;
+  }
+
   return (
     <section className="landing">
       <div className="dark-overlay">

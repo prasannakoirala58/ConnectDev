@@ -19,6 +19,8 @@ module.exports = connectDB;
 
 // "mongodb+srv://prasanna:h6yhJiw77FoYhAJG@devconnector.yyztknd.mongodb.net/?retryWrites=true&w=majority"
 
-// MERN DEV CONNECTOR CLUSTER CONNECTION DETAILS
+// MERN DEVHUB CLUSTER CONNECTION DETAILS
 // Username: prasanna
 // password:  h6yhJiw77FoYhAJG
+
+// A default.json file in this config folder is required to run this app.
