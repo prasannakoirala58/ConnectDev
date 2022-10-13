@@ -46,6 +46,13 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
+// "scripts": {
+//   "start": "nodemon ./bin/www",
+//   "client": "npm start --prefix client",
+//   "dev": "concurrently \"npm run start\" \"npm run client\"",
+//   "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+// },
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
