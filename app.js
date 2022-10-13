@@ -36,6 +36,16 @@ app.use('/api/profile', profileRouter);
 app.use('/api/posts', postsRouter);
 // app.use('/', (req, res, next) => res.send('Hello world'));
 
+// Serve static assets in production
+if (process.env.NODE_ENV === 'production') {
+  // Set static folder
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
