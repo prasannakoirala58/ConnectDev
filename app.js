@@ -41,6 +41,8 @@ app.use('/api/profile', profileRouter);
 app.use('/api/posts', postsRouter);
 // app.use('/', (req, res, next) => res.send('Hello world'));
 
+console.log(__dirname, 'client', 'build', 'index.html');
+
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
   // Set static folder
