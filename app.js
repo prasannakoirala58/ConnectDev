@@ -14,12 +14,12 @@ const postsRouter = require('./routes/api/posts');
 const connectDB = require('./config/db');
 
 var app = express();
-app.use(helmet());
-// app.use(
-//   helmet({
-//     contentSecurityPolicy: false,
-//   })
-// );
+// app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
 
 // CONNECT DATABASE
 connectDB();
