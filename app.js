@@ -18,6 +18,8 @@ var app = express();
 app.use(
   helmet({
     contentSecurityPolicy: false,
+    crossOriginEmbedderPolicy: false,
+    crossOriginResourcePolicy: false,
   })
 );
 
@@ -41,13 +43,14 @@ app.use('/api/profile', profileRouter);
 app.use('/api/posts', postsRouter);
 // app.use('/', (req, res, next) => res.send('Hello world'));
 
-console.log(__dirname, 'client', 'build', 'index.html');
+// app.use(express.static(path.join(__dirname, 'client', 'build'))); might use this
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
   // Set static folder
   // app.use(express.static('client/build'));
-  app.use('/static', express.static(path.join(__dirname, 'client/build')));
+  // app.use('/static', express.static(path.join(__dirname, 'client/build')));
+  app.use(express.static(path.join(__dirname, 'client', 'build')));
 
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
