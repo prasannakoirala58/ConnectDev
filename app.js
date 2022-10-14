@@ -54,6 +54,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
+// scripts for development which requires nodemon and concurrently
 // "scripts": {
 //   "start": "nodemon ./bin/www",
 //   "client": "npm start --prefix client",
