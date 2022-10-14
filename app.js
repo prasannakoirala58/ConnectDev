@@ -62,6 +62,10 @@ if (process.env.NODE_ENV === 'production') {
 //   "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
 // },
 
+// https://devcenter.heroku.com/articles/troubleshooting-node-deploys#common-issues
+// This link here of common issues of heroku has missing dependencies and it helped
+// fix the deployment error.
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
