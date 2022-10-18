@@ -15,6 +15,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const { user } = useSelector(selectAuth);
   const { profile, loading } = useSelector(selectProfile);
+  console.log(`The profile is: ${profile}`);
 
   useEffect(() => {
     dispatch(getCurrentProfile());
@@ -24,40 +25,46 @@ const Dashboard = () => {
   return loading && profile === null ? (
     <Spinner />
   ) : (
-    <Fragment>
-      <h1 className="large text-primary">Dashboard</h1>
-      <p className="lead">
-        <i className="fas fa-user"></i> Welcome {user && user.user.name}
-      </p>
-      {!profile ? (
-        <Fragment>
-          {' '}
-          <p>You have not yet set up a profile. Please add your profile details.</p>{' '}
-          <Link to="/create-profile" className="btn btn-primary my-1">
-            Create Profile
-          </Link>
-        </Fragment>
-      ) : (
-        <Fragment>
-          <DashboardActions />
-          <Experience experience={profile.experience} />
-          <Education education={profile.education} />
+    (user !== null || user !== undefined) && (
+      <Fragment>
+        <h1 className="large text-primary">Dashboard</h1>
+        <p className="lead">
+          <i className="fas fa-user"></i> Welcome {user && user.user.name}
+        </p>
+        {!profile ? (
+          <Fragment>
+            {' '}
+            <p>
+              You have not yet set up a profile. Please add your profile details.
+            </p>{' '}
+            <Link to="/create-profile" className="btn btn-primary my-1">
+              Create Profile
+            </Link>
+          </Fragment>
+        ) : (
+          (profile !== null || profile !== undefined) && (
+            <Fragment>
+              <DashboardActions />
+              <Experience experience={profile.experience} />
+              <Education education={profile.education} />
 
-          <div className="my-2">
-            <button
-              className="btn btn-danger"
-              onClick={() => {
-                dispatch(accountDeleted());
-                dispatch(logout());
-                navigate('/login');
-              }}
-            >
-              <i className="fas fa-user-minus"></i> Delete Account
-            </button>
-          </div>
-        </Fragment>
-      )}
-    </Fragment>
+              <div className="my-2">
+                <button
+                  className="btn btn-danger"
+                  onClick={() => {
+                    dispatch(accountDeleted());
+                    dispatch(logout());
+                    navigate('/login');
+                  }}
+                >
+                  <i className="fas fa-user-minus"></i> Delete Account
+                </button>
+              </div>
+            </Fragment>
+          )
+        )}
+      </Fragment>
+    )
   );
 };
 

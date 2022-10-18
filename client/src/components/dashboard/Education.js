@@ -11,21 +11,25 @@ const Education = ({ education }) => {
     await dispatch(deleteEducation(id));
   };
 
-  const educations = education.map((edu) => (
-    <tr key={edu._id}>
-      <td>{edu.school}</td>
-      <td className="hide-sm">{edu.degree}</td>
-      <td>
-        <Moment format="YYYY/MM/DD">{edu.from}</Moment> -{' '}
-        {edu.to === null ? 'Now' : <Moment format="YYYY/MM/DD">{edu.to}</Moment>}
-      </td>
-      <td>
-        <button onClick={() => onClick(edu._id)} className="btn btn-danger">
-          Delete
-        </button>
-      </td>
-    </tr>
-  ));
+  console.log('Education is:', education);
+
+  const educations =
+    education &&
+    education.map((edu) => (
+      <tr key={edu._id}>
+        <td>{edu.school}</td>
+        <td className="hide-sm">{edu.degree}</td>
+        <td>
+          <Moment format="YYYY/MM/DD">{edu.from}</Moment> -{' '}
+          {edu.to === null ? 'Now' : <Moment format="YYYY/MM/DD">{edu.to}</Moment>}
+        </td>
+        <td>
+          <button onClick={() => onClick(edu._id)} className="btn btn-danger">
+            Delete
+          </button>
+        </td>
+      </tr>
+    ));
 
   return (
     <>

@@ -11,21 +11,24 @@ const Experience = ({ experience }) => {
     await dispatch(deleteExperience(id));
   };
 
-  const experiences = experience.map((exp) => (
-    <tr key={exp._id}>
-      <td>{exp.company}</td>
-      <td className="hide-sm">{exp.title}</td>
-      <td>
-        <Moment format="YYYY/MM/DD">{exp.from}</Moment> -{' '}
-        {exp.to === null ? 'Now' : <Moment format="YYYY/MM/DD">{exp.to}</Moment>}
-      </td>
-      <td>
-        <button onClick={() => onClick(exp._id)} className="btn btn-danger">
-          Delete
-        </button>
-      </td>
-    </tr>
-  ));
+  console.log(`Experience is: ${experience}`);
+  const experiences =
+    experience &&
+    experience.map((exp) => (
+      <tr key={exp._id}>
+        <td>{exp.company}</td>
+        <td className="hide-sm">{exp.title}</td>
+        <td>
+          <Moment format="YYYY/MM/DD">{exp.from}</Moment> -{' '}
+          {exp.to === null ? 'Now' : <Moment format="YYYY/MM/DD">{exp.to}</Moment>}
+        </td>
+        <td>
+          <button onClick={() => onClick(exp._id)} className="btn btn-danger">
+            Delete
+          </button>
+        </td>
+      </tr>
+    ));
 
   return (
     <>
