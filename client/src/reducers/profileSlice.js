@@ -169,6 +169,7 @@ const profileSlice = createSlice({
     },
 
     [accountDeleted.rejected]: (state, { payload }) => {
+      console.log(payload);
       return { ...state, error: payload, loading: false };
     },
   },

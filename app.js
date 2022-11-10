@@ -62,6 +62,13 @@ if (process.env.NODE_ENV === 'production') {
 //   "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
 // },
 
+// "scripts": {
+//   "start": "nodemon ./bin/www",
+//   "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false  npm install --prefix client && npm run build --prefix client",
+//   "client": "npm start --prefix client",
+//   "dev": "concurrently \"npm run start\" \"npm run client\""
+// },
+
 // https://devcenter.heroku.com/articles/troubleshooting-node-deploys#common-issues
 // This link here of common issues of heroku has missing dependencies and it helped
 // fix the deployment error.

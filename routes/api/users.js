@@ -45,6 +45,8 @@ router.post(
         d: 'mm', // gives default image for the avatar
       });
 
+      // console.log(avatar);
+
       user = new User({ name, email, avatar, password });
 
       // 3. Encrypt user password using bcrypt

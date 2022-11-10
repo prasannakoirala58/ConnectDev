@@ -15,12 +15,22 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const { user } = useSelector(selectAuth);
   const { profile, loading } = useSelector(selectProfile);
-  console.log(`The profile is: ${profile}`);
+  // console.log(`The profile is: ${profile}`);
 
   useEffect(() => {
     dispatch(getCurrentProfile());
     dispatch(loadUser());
   }, []);
+
+  const onDeleteAccount = () => {
+    if (window.confirm('Are you sure? This can NOT be undone!')) {
+      dispatch(accountDeleted());
+      dispatch(logout());
+      navigate('/login');
+    } else {
+      navigate('/dashboard');
+    }
+  };
 
   return loading && profile === null ? (
     <Spinner />
@@ -49,14 +59,7 @@ const Dashboard = () => {
               <Education education={profile.education} />
 
               <div className="my-2">
-                <button
-                  className="btn btn-danger"
-                  onClick={() => {
-                    dispatch(accountDeleted());
-                    dispatch(logout());
-                    navigate('/login');
-                  }}
-                >
+                <button className="btn btn-danger" onClick={onDeleteAccount}>
                   <i className="fas fa-user-minus"></i> Delete Account
                 </button>
               </div>

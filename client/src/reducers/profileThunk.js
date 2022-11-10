@@ -225,18 +225,18 @@ export const clearProfile = createAsyncThunk('profile/clearProfile', () => {
 export const accountDeleted = createAsyncThunk(
   'profile/accountDeleted',
   async (id, { rejectWithValue, dispatch }) => {
-    if (window.confirm('Are you sure? This can NOT be undone!')) {
-      try {
-        const res = await axios.delete(`/api/profile`);
-        dispatch(clearProfile());
-        dispatch(setAlert('Your account has been permanently deleted'));
-        return res.data;
-      } catch (err) {
-        return rejectWithValue({
-          msg: err.response.statusText,
-          status: err.response.status,
-        });
-      }
+    // if (window.confirm('Are you sure? This can NOT be undone!')) {
+    try {
+      const res = await axios.delete(`/api/profile`);
+      dispatch(clearProfile());
+      dispatch(setAlert('Your account has been permanently deleted'));
+      return res.data;
+    } catch (err) {
+      return rejectWithValue({
+        msg: err.response.statusText,
+        status: err.response.status,
+      });
     }
+    // }
   }
 );

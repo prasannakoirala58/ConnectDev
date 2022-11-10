@@ -7,6 +7,7 @@ import { setAlert } from '../../reducers/alertSlice';
 import { selectAuth } from '../../reducers/authSlice';
 import { register, loadUser } from '../../reducers/authThunk';
 
+// Register Component
 const Register = () => {
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector(selectAuth);
@@ -28,6 +29,8 @@ const Register = () => {
       dispatch(setAlert('Passwords do not match', 'danger'));
 
       // console.log('Passwords do not match');
+    } else if (!/^[a-zA-Z]+$/.test(name)) {
+      dispatch(setAlert('Name must not contain letters', 'danger'));
     } else {
       // console.log(formData, 'SUCCESS!');
       dispatch(register({ name, email, password }));
@@ -105,3 +108,6 @@ const Register = () => {
 // };
 
 export default Register;
+
+///^[a-zA-ZäöüÄÖÜ]/;
+// const re = /^[A-Za-z]+$/;
