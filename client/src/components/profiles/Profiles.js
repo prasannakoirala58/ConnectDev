@@ -26,7 +26,7 @@ const Profiles = () => {
             <i className="fab fa-connectdevelop"></i> Browse and connect with developers
           </p>
           <div className="profiles">
-            {console.log(profiles)}
+            {/* {console.log(profiles)} */}
             {profiles.length > 0 ? (
               profiles.map((profile) => (
                 <ProfileItem key={profile._id} profile={profile} />

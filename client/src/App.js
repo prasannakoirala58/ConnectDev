@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
@@ -28,9 +28,21 @@ if (localStorage.token) {
 }
 
 const App = () => {
+  // const [className, setClassName] = useState('');
+
   useEffect(() => {
     store.dispatch(loadUser());
+
+    // let pathname = window.location.pathname;
+    // console.log('pathname inside useEffect ran: ', pathname);
+
+    // if (window.location.pathname !== '/') {
+    //   setClassName('container');
+    // }
   }, []);
+
+  // console.log('current URL 👉️', window.location.href);
+  // console.log('current Pathname 👉️', window.location.pathname);
 
   return (
     <Provider store={store}>
@@ -41,7 +53,7 @@ const App = () => {
             <Route exact path="/" element={<Landing />} />
             {/* exact is used to make sure that the path is the same as the one in the url */}
           </Routes>
-          <section className="container">
+          <section className={'container'}>
             <Alert />
             <Routes>
               <Route exact path="/register" element={<Register />}></Route>
@@ -78,3 +90,9 @@ const App = () => {
 };
 
 export default App;
+
+// return (
+//   <div className="App">
+//     <Route path="/" element={<Landing />} />
+//   </div>
+// )

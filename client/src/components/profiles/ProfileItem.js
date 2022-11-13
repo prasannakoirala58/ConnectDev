@@ -14,7 +14,7 @@ const ProfileItem = ({
   },
 }) => {
   const dispatch = useDispatch();
-  console.log(status, _id);
+  // console.log(status, _id);
 
   const getAllProfiles = async () => {
     await dispatch(getProfiles());

@@ -72,7 +72,7 @@ const Navbar = () => {
     <nav className="navbar bg-dark">
       <h1>
         <Link to="/">
-          <i className="fas fa-code"></i> DevHub
+          <i className="fas fa-code"></i> ConnectDev
         </Link>
       </h1>
       {!loading && <>{isAuthenticated ? authLinks : guestLinks}</>}
