@@ -90,3 +90,8 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
+
+// MERN Dev Connector Cluster Connection User Details:
+
+// Username: prasanna
+// password:  h6yhJiw77FoYhAJG
